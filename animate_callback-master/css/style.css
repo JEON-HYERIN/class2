@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@100&display=swap");
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+ul,ol {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	outline: 0;
+}
+
+header {
+  width: 100%; position: absolute; top: 0px; left: 0px;
+  z-index: 2; padding: 5vh 5vw; display: flex; flex-wrap: wrap; justify-content: space-between; align-content: center;
+}
+
+header ul {
+  display: flex;  
+}
+header ul li a {
+  margin: 10px; color: #555;
+}
+
+main {
+  width: 100%; height: 100vh; overflow: hidden;
+  background: url(../img/bgBody.jpg) no-repeat center/cover;
+  position: relative;
+}
+main .txt {
+  width: 40vw; position: absolute; top: 50%; transform: translateY(-75%); left: 15vw; transition: 1s;
+}
+main .woman {
+  width: 40vw; min-width: 800px; 
+  position: absolute; top: 0px; left: 50%; transition: 1s 0.1s;
+}
+main .btnOpen {
+  width: 20vw; height: 40px; background: rgba(0,0,0,.6);
+  position: absolute; bottom: 30vh; left: 15vw;
+  font: bold 14px/1 'arial'; color: #ddd;
+  display: flex; justify-content: center; align-items: center;
+  transition: 1s 0.2s;
+}
+
+main.off .txt {top: 0%; opacity: 0;}
+main.off .woman {left: 80%; opacity: 0;}
+main.off .btnOpen {bottom: 10vh; opacity: 0;}
+
+aside {
+  width: 60vw; height: 50vh;
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); z-index: 3;
+  display: none;
+}
+aside .top {
+  width: 0%; height: 1px; background: #000;
+  position: absolute; top: 0px; left: 0px;
+}
+aside .right {
+  width: 1px; height: 0%; background: #000;
+  position: absolute; top: 0px; right: 0px;
+}
+aside .bottom {
+  width: 0%; height: 1px; background: #000;
+  position: absolute; bottom: 0px; right: 0px;
+}
+aside .left {
+  width: 1px; height: 0%; background: #000;
+  position: absolute; left: 0px; bottom: 0px;
+}
+aside .con {
+  width: 100%; height: 100%; background: #000;
+  position: absolute; top: 0px; left: 0px; display: none;
+}
+aside .con .btnClose {
+  position: absolute; top: 30px; right: -30px; opacity: 0;
+  font: bold 12px/1 'arial'; color: #fff;
+  transition: 0.5s;
+}
+aside .con .btnClose.on {
+  right: 30px; opacity: 1;
+}
