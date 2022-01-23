@@ -16,18 +16,19 @@ a {
     border: 5px solid #000;
     margin: 100px auto;
     position: relative;
+    overflow: hidden;
   }
 
   #slider1 ul {
-    width: calc(100% * 3);
+    width: calc(100% * 4);
     height: 100%;
     position: absolute;
-    left: 0%;
+    left: -100%;
     top: 0%;
   }
 
   #slider1 ul li {
-    width: calc(100% / 3);
+    width: calc(100% / 4);
     height: 100%;
     float: left;
   }
@@ -40,6 +41,9 @@ a {
   }
   #slider1 ul li[data-index='3'] {
     background-color: aqua;
+  }
+  #slider1 ul li[data-index='4'] {
+    background-color: lightgreen;
   }
 
   .prev {
