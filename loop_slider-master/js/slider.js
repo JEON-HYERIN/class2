@@ -1,42 +1,56 @@
-/*
-$(선택자).appendTo('부모선택자');
-선택자를 잘라내기 해서 부모선택자 기준 제일 뒷쪽으로 요소 배치
-
-$(선택자).prependTo('부모선택자');
-선택자를 잘라내기 해서 부모선택자 기준 제일 앞쪽으로 요소 배치
-*/
-
-var frame = $('#slider1');
-var ul = frame.find('ul');
-var lis = ul.children('li');
+var frame1 = $('#slider1');
+var frame2 = $('#slider2');
 var prev = $('.prev');
 var next = $('.next');
-var speed = 2000;
+var speed = 500;
 var enableClick = true;
 
-prev.on('click', function (e) {
-  e.preventDefault();
-  prevSlide();
-});
+init(frame1);
+init(frame2);
 
-next.on('click', function (e) {
+prev.on('click', function(e){
   e.preventDefault();
-  if (enableClick) {
+  if(enableClick){
+    enableClick=false;
+    prevSlide(frame1);
+    prevSlide(frame2);
+  }  
+})
+
+next.on('click', function(e){
+  e.preventDefault();
+  if(enableClick){
     enableClick = false;
-    nextSlide();
-  }
-});
+    nextSlide(frame1);
+    nextSlide(frame2);
+  }  
+})
 
-function prevSlide() {
-  ul.stop().animate({left: '0%'}, speed, function () {
-    ul.children('li').last().prependTo(ul);
-    ul.css({left: '-100%'});
-  });
+function init(frame){
+  var ul = frame.find('ul');
+  var len = ul.children('li').length;
+  ul.css({width: 100*len+'%', left:'-100%'});
+  ul.children('li').css({width: 100/len+'%'});
+  ul.children('li').last().prependTo(ul);
 }
-function nextSlide() {
-  ul.stop().animate({left: '-200%'}, speed, function () {
-    ul.children('li').first().appendTo(ul);
+
+function prevSlide(frame){
+  var ul = frame.find('ul');
+  ul.stop().animate({left: '0%'},speed,function(){
+    ul.children('li').last().prependTo(ul);
     ul.css({left: '-100%'});
     enableClick = true;
   });
 }
+
+function nextSlide(frame){ 
+  var ul = frame.find('ul');
+  ul.stop().animate({left: '-200%'},speed,function(){
+    ul.children('li').first().appendTo(ul);
+    ul.css({left: '-100%'});
+    enableClick = true;
+  })
+}
+
+
+
